@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>multiple streams watcher</title>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+    <div class="header">
+        MULTIPLE STREAMS WATCHER
+    </div>
+    <div id="view-list"></div>
+    <div>
+        <input id="add-view-input" class="text-input" placeholder="channel"/>
+        <button id="add-view-btn" onclick="addView(document.getElementById('add-view-input').value)">Add</button>
+    </div>
+</div>
+</body>
+</html>
