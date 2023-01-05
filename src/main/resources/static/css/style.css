@@ -50,6 +50,10 @@ input#add-view-input {
     left: -100vw;
 }
 
+.twitch-embed-container {
+    height: 100%;
+}
+
 .app {
     flex-direction: column;
     overflow: auto;
@@ -91,19 +95,31 @@ h1#header-text {
     color: var(--text-color);
 }
 
+.view-list-box {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.view {
+    flex-direction: column;
+    width: 400px;
+    height: 275px;
+    min-width: 400px;
+    min-height: 275px;
+    max-width: 100%;
+    max-height: 99%;
+    border-radius: 15px 15px 0px 0px;
+    margin: 5px;
+    resize: both;
+    overflow: hidden;
+    background-color: var(--view-background-color);
+    box-shadow: 0px 0px 5px var(--shadow-color);
+}
+
 .view-header {
     flex-direction: row;
     margin: 5px 15px;
     justify-content: space-between;
-}
-
-.view {
-    background-color: var(--view-background-color);
-    border-radius: 15px 15px 0px 0px;
-    margin: 5px;
-    resize: both;
-    overflow: auto;
-    box-shadow: 0px 0px 5px var(--shadow-color);
 }
 
 .add-view-box {

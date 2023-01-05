@@ -3,7 +3,7 @@ function spawnTwitchEmbed(channelName, enableChat) {
     let twitchEmbedId = getTwitchEmbedId(channelName);
     new Twitch.Embed(twitchEmbedId, {
         width: "100%",
-        height: "550",
+        height: "100%",
         channel: channelName,
         layout: layout
         // Only needed if this page is going to be embedded on other websites
@@ -33,7 +33,7 @@ function addView(channelName) {
     let viewList = document.getElementById("view-list");
     let view = document.createElement("div");
     view.id = getView(channelName);
-    view.className = "view"
+    view.className = "view flex"
     viewList.append(view);
     view.innerHTML =
         "<div class='view-header flex'>" +
@@ -48,7 +48,7 @@ function addView(channelName) {
                 "<img class='btn-close-image' src='image/close.png'>" +
             "</div>" +
         "</div>" +
-        "<div id='" + twitchEmbedId + "'></div>";
+        "<div id='" + twitchEmbedId + "' class='twitch-embed-container'></div>";
     spawnTwitchEmbed(channelName, false);
 }
 
