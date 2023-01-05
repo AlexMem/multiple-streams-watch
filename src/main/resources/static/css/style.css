@@ -1,5 +1,6 @@
 * {
     --text-color: azure;
+    --header-secondary-text-color: gray;
     --shadow-color: #0f0f0f;
     --background-color: #1f1f1f;
     --view-background-color: #252525;
@@ -29,6 +30,10 @@ html {
 body {
     margin: 0;
     background-color: var(--background-color);
+}
+
+a {
+    text-decoration: none;
 }
 
 input {
@@ -65,6 +70,10 @@ input#add-view-input {
 
 .flex {
     display: flex;
+}
+
+.direction-column {
+    flex-direction: column;
 }
 
 .header {
