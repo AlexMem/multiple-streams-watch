@@ -36,10 +36,17 @@ function addView(channelName) {
     view.className = "view"
     viewList.append(view);
     view.innerHTML =
-        "<div>" +
-            "<a class='channel-nameplate'>" + channelName + "</a>" +
-            " <a class='azure-text'>Chat</a><input id='" + chatToggleCheckboxId + "' type='checkbox' onclick='toggleChat(\"" + channelName + "\", document.getElementById(\"" + chatToggleCheckboxId + "\").checked)'>" +
-            " <button onclick='removeView(\"" + channelName + "\")'>Close</button>" +
+        "<div class='view-header flex'>" +
+            "<h3 class='channel-nameplate'>" + channelName + "</h3>" +
+            "<div class='chat-toggler-box flex'>" +
+                "<label for='" + chatToggleCheckboxId + "' class='chat-toggler-label'>" +
+                "<img class='chat-toggler-label-image' src='image/chat.png'>" +
+                "</label>" +
+                "<input id='" + chatToggleCheckboxId + "' type='checkbox' class='chat-toggler visually-hidden' onclick='toggleChat(\"" + channelName + "\", document.getElementById(\"" + chatToggleCheckboxId + "\").checked)'>" +
+            "</div>" +
+            "<div class='btn btn-close' onclick='removeView(\"" + channelName + "\")'>" +
+                "<img class='btn-close-image' src='image/close.png'>" +
+            "</div>" +
         "</div>" +
         "<div id='" + twitchEmbedId + "'></div>";
     spawnTwitchEmbed(channelName, false);

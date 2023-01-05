@@ -1,9 +1,23 @@
 * {
     --text-color: azure;
+    --shadow-color: #000000;
+    --background-color: #151515;
+    --view-background-color: #18181b;
+    --view-border-color: #454545;
+    --btn-color: #454545;
+    --btn-color-hovered: #626262;
+    --btn-shadow-color: var(--btn-color-hovered);
+    --btn-close-color: #b83737;
+    --btn-close-color-hovered: #d03e3e;
+    --btn-close-shadow-color: var(--btn-close-color-hovered);
+    --input-background-color: #e2e2e2;
+    --input-shadow-color: var(--input-background-color);
+    --chat-toggler-color: #2a6696;
+    --chat-toggler-color-hovered: #3173ac;
+    --chat-toggler-color-pressed: #225380;
+    --chat-toggler-shadow-color: var(--chat-toggler-color-hovered);
     box-sizing: border-box;
     font-family: sans-serif;
-    margin-left: 0;
-    margin-right: 0;
 }
 
 html {
@@ -11,28 +25,60 @@ html {
 }
 
 body {
-    background-color: #2d2d2d;
+    margin: 0;
+    background-color: var(--background-color);
+}
+
+input {
+    outline: none;
+    border: unset;
+    border-radius: 3px 3px 3px 3px;
+    background-color: var(--input-background-color);
+}
+
+input:hover, input:focus {
+    opacity: 1;
+    box-shadow: 0px 0px 5px var(--input-shadow-color);
+}
+
+input#add-view-input {
+    border-radius: 3px 0px 0px 3px;
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -100vw;
 }
 
 .app {
-    display: flex;
     flex-direction: column;
     overflow: auto;
     height: 100%;
     width: 100%;
 }
 
+.flex {
+    display: flex;
+}
+
 .header {
-    display: inline-flex;
     position: sticky;
     top: 0;
     left: 0;
-    min-width: 100%;
-    font-size: 50px;
-    justify-content: center;
-    box-shadow: 0px 3px 5px #1c1c1c;
+    margin: 0px 0px 15px 0px;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0px 3px 5px var(--shadow-color);
     z-index: 10;
     color: var(--text-color);
+}
+
+.twitch-logo {
+    margin: 7px 15px;
+}
+
+h1#header-text {
+    margin: 0;
 }
 
 .channel-nameplate {
@@ -45,7 +91,85 @@ body {
     color: var(--text-color);
 }
 
+.view-header {
+    flex-direction: row;
+    margin: 5px 15px;
+    justify-content: space-between;
+}
+
 .view {
+    background-color: var(--view-background-color);
+    border-radius: 15px 15px 0px 0px;
+    margin: 5px;
     resize: both;
     overflow: auto;
+    box-shadow: 0px 0px 5px var(--shadow-color);
+}
+
+.add-view-box {
+    margin: 5px 25px;
+}
+
+.btn {
+    border-radius: 3px 3px 3px 3px;
+    padding: 5px 10px;
+    transition: 0.15s;
+    background-color: var(--btn-color);
+    color: var(--text-color);
+}
+
+.btn:hover {
+    opacity: 1;
+    background-color: var(--btn-color-hovered);
+    box-shadow: 0px 0px 5px var(--btn-shadow-color);
+}
+
+.btn#add-view-btn {
+    border-radius: 0px 3px 3px 0px;
+}
+
+.add-view-btn-image {
+    height: 10px;
+}
+
+.chat-toggler-box {
+    margin-left: auto;
+    margin-right: 105px;
+}
+
+.chat-toggler-label {
+    align-self: center;
+    border-radius: 3px 3px 3px 3px;
+    padding: 5px 10px;
+    transition: 0.15s;
+    background-color: var(--chat-toggler-color);
+    color: var(--text-color);
+}
+
+.chat-toggler-label:hover {
+    background-color: var(--chat-toggler-color-hovered);
+    box-shadow: 0px 0px 5px var(--chat-toggler-shadow-color);
+}
+
+.chat-toggler-label:active {
+    background-color: var(--chat-toggler-color-pressed);
+    box-shadow: 0px 0px 0px var(--chat-toggler-shadow-color);
+}
+
+.chat-toggler-label-image {
+    height: 15px;
+}
+
+.btn-close {
+    align-self: center;
+    background-color: var(--view-background-color);
+}
+
+.btn-close:hover {
+    background-color: var(--btn-close-color-hovered);
+    box-shadow: 0px 0px 5px var(--btn-close-shadow-color);
+}
+
+.btn-close-image {
+    height: 10px;
 }

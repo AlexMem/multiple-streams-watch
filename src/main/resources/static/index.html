@@ -9,14 +9,17 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="app">
-    <div class="header">
-        MULTIPLE STREAMS WATCHER
+<div class="app flex">
+    <div class="header flex">
+        <div><img class="twitch-logo" src="image/twitch-logo.png" height="50"></div>
+        <div><h1 id="header-text">MULTIPLE STREAMS WATCHER</h1></div>
     </div>
     <div id="view-list"></div>
-    <div>
+    <div class="add-view-box flex">
         <input id="add-view-input" class="text-input" placeholder="channel"/>
-        <button id="add-view-btn" onclick="addView(document.getElementById('add-view-input').value)">Add</button>
+        <div id="add-view-btn" class="btn" onclick="addView(document.getElementById('add-view-input').value)">
+            <img class="add-view-btn-image" src="image/plus-symbol-button.png">
+        </div>
     </div>
 </div>
 </body>
