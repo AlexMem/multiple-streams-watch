@@ -1,14 +1,16 @@
 * {
     --text-color: azure;
-    --shadow-color: #000000;
-    --background-color: #151515;
-    --view-background-color: #18181b;
+    --shadow-color: #0f0f0f;
+    --background-color: #1f1f1f;
+    --view-background-color: #252525;
     --view-border-color: #454545;
     --btn-color: #454545;
     --btn-color-hovered: #626262;
+    --btn-color-pressed: #353535;
     --btn-shadow-color: var(--btn-color-hovered);
     --btn-close-color: #b83737;
     --btn-close-color-hovered: #d03e3e;
+    --btn-close-color-pressed: #9f3030;
     --btn-close-shadow-color: var(--btn-close-color-hovered);
     --input-background-color: #e2e2e2;
     --input-shadow-color: var(--input-background-color);
@@ -98,6 +100,7 @@ h1#header-text {
 .view-list-box {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .view {
@@ -135,9 +138,13 @@ h1#header-text {
 }
 
 .btn:hover {
-    opacity: 1;
     background-color: var(--btn-color-hovered);
     box-shadow: 0px 0px 5px var(--btn-shadow-color);
+}
+
+.btn:active {
+    background-color: var(--btn-color-pressed);
+    box-shadow: 0px 0px 0px var(--btn-shadow-color);
 }
 
 .btn#add-view-btn {
@@ -150,7 +157,7 @@ h1#header-text {
 
 .chat-toggler-box {
     margin-left: auto;
-    margin-right: 105px;
+    margin-right: 15px;
 }
 
 .chat-toggler-label {
@@ -158,8 +165,7 @@ h1#header-text {
     border-radius: 3px 3px 3px 3px;
     padding: 5px 10px;
     transition: 0.15s;
-    background-color: var(--chat-toggler-color);
-    color: var(--text-color);
+    background-color: var(--view-background-color);
 }
 
 .chat-toggler-label:hover {
@@ -184,6 +190,11 @@ h1#header-text {
 .btn-close:hover {
     background-color: var(--btn-close-color-hovered);
     box-shadow: 0px 0px 5px var(--btn-close-shadow-color);
+}
+
+.btn-close:active {
+    background-color: var(--btn-close-color-pressed);
+    box-shadow: 0px 0px 0px var(--btn-close-shadow-color);
 }
 
 .btn-close-image {

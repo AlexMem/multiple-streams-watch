@@ -1,13 +1,17 @@
 function spawnTwitchEmbed(channelName, enableChat) {
     let layout = enableChat ? "video-with-chat" : "video";
     let twitchEmbedId = getTwitchEmbedId(channelName);
-    new Twitch.Embed(twitchEmbedId, {
+    let embed = new Twitch.Embed(twitchEmbedId, {
         width: "100%",
         height: "100%",
         channel: channelName,
         layout: layout
-        // Only needed if this page is going to be embedded on other websites
         // parent: ["twitch.tv"]
+    });
+    embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+        let player = embed.getPlayer();
+        player.setQuality("360p");
+        player.play();
     });
 }
 
