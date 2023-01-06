@@ -3,10 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>multiple streams watcher</title>
+	<title>Multiple Streams Watcher</title>
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="image/logo.png">
 </head>
 <body>
 <div class="app flex">
@@ -15,7 +16,7 @@
         <div class="flex direction-column">
             <h1 id="header-text">MULTIPLE STREAMS WATCHER</h1>
             <p style="font-size: 12px; margin: 0; align-self: end; color: var(--header-secondary-text-color)">
-                v1.0.3
+                v1.0.4
                 <a style="color: var(--header-secondary-text-color)" target="_blank" rel="noopener noreferrer" href='https://github.com/AlexMem'>
                     @seloid
                 </a>
@@ -29,6 +30,10 @@
         </div>
     </div>
     <div id="view-list" class="view-list-box flex"></div>
+    <div id="empty-vl-placeholder" class="empty-view-list-placeholder flex direction-column">
+        <div style="font-size: 65px;">It's quite empty here...</div>
+        <div style="font-size: 35px;">you can add some streams via input above</div>
+    </div>
 </div>
 </body>
 </html>

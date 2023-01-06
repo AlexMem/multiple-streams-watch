@@ -1,5 +1,5 @@
 * {
-    --text-color: azure;
+    --text-color: #cfcfcf;
     --header-secondary-text-color: gray;
     --shadow-color: #0f0f0f;
     --background-color: #1f1f1f;
@@ -19,8 +19,11 @@
     --chat-toggler-color-hovered: #3173ac;
     --chat-toggler-color-pressed: #225380;
     --chat-toggler-shadow-color: var(--chat-toggler-color-hovered);
+    --empty-view-list-placeholder-text-color: hsla(0, 0%, 58%, 0.75);
+    --chromatic-abberation-color-1: hsla(0, 100%, 50%, 0.45);
+    --chromatic-abberation-color-2: hsla(218, 100%, 50%, 0.75);
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: monospace;
 }
 
 html {
@@ -45,11 +48,11 @@ input {
 
 input:hover, input:focus {
     opacity: 1;
-    box-shadow: 0px 0px 5px var(--input-shadow-color);
+    box-shadow: 0 0 5px var(--input-shadow-color);
 }
 
 input#add-view-input {
-    border-radius: 3px 0px 0px 3px;
+    border-radius: 3px 0 0 3px;
 }
 
 .visually-hidden {
@@ -80,12 +83,13 @@ input#add-view-input {
     position: sticky;
     top: 0;
     left: 0;
-    margin: 0px 0px 15px 0px;
+    margin: 0 0 15px 0;
     justify-content: flex-start;
     align-items: center;
-    box-shadow: 0px 3px 5px var(--shadow-color);
-    z-index: 10;
+    background-color: var(--background-color);
+    box-shadow: 0 3px 5px var(--shadow-color);
     color: var(--text-color);
+    z-index: 10;
 }
 
 .twitch-logo {
@@ -120,12 +124,12 @@ h1#header-text {
     min-height: 275px;
     max-width: 100%;
     max-height: 99%;
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 15px 15px 0 0;
     margin: 5px;
     resize: both;
     overflow: hidden;
     background-color: var(--view-background-color);
-    box-shadow: 0px 0px 5px var(--shadow-color);
+    box-shadow: 0 0 5px var(--shadow-color);
 }
 
 .view-header {
@@ -148,16 +152,16 @@ h1#header-text {
 
 .btn:hover {
     background-color: var(--btn-color-hovered);
-    box-shadow: 0px 0px 5px var(--btn-shadow-color);
+    box-shadow: 0 0 5px var(--btn-shadow-color);
 }
 
 .btn:active {
     background-color: var(--btn-color-pressed);
-    box-shadow: 0px 0px 0px var(--btn-shadow-color);
+    box-shadow: 0 0 0 var(--btn-shadow-color);
 }
 
 .btn#add-view-btn {
-    border-radius: 0px 3px 3px 0px;
+    border-radius: 0 3px 3px 0;
 }
 
 .add-view-btn-image {
@@ -179,12 +183,12 @@ h1#header-text {
 
 .chat-toggler-label:hover {
     background-color: var(--chat-toggler-color-hovered);
-    box-shadow: 0px 0px 5px var(--chat-toggler-shadow-color);
+    box-shadow: 0 0 5px var(--chat-toggler-shadow-color);
 }
 
 .chat-toggler-label:active {
     background-color: var(--chat-toggler-color-pressed);
-    box-shadow: 0px 0px 0px var(--chat-toggler-shadow-color);
+    box-shadow: 0 0 0 var(--chat-toggler-shadow-color);
 }
 
 .chat-toggler-label-image {
@@ -198,14 +202,24 @@ h1#header-text {
 
 .btn-close:hover {
     background-color: var(--btn-close-color-hovered);
-    box-shadow: 0px 0px 5px var(--btn-close-shadow-color);
+    box-shadow: 0 0 5px var(--btn-close-shadow-color);
 }
 
 .btn-close:active {
     background-color: var(--btn-close-color-pressed);
-    box-shadow: 0px 0px 0px var(--btn-close-shadow-color);
+    box-shadow: 0 0 0 var(--btn-close-shadow-color);
 }
 
 .btn-close-image {
     height: 10px;
+}
+
+.empty-view-list-placeholder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: var(--empty-view-list-placeholder-text-color);
+    text-shadow: -1px 1px 1px var(--chromatic-abberation-color-1), 1px 2px 1px var(--chromatic-abberation-color-2);
 }

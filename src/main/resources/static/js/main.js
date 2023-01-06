@@ -1,3 +1,5 @@
+var emptyViewListPlaceholderVisible = true;
+
 function spawnTwitchEmbed(channelName, enableChat) {
     let layout = enableChat ? "video-with-chat" : "video";
     let twitchEmbedId = getTwitchEmbedId(channelName);
@@ -54,12 +56,14 @@ function addView(channelName) {
         "</div>" +
         "<div id='" + twitchEmbedId + "' class='twitch-embed-container'></div>";
     spawnTwitchEmbed(channelName, false);
+    checkIfViewListEmpty();
 }
 
 function removeView(channelName) {
     let viewList = document.getElementById("view-list");
     let view = document.getElementById(getView(channelName));
     viewList.removeChild(view);
+    checkIfViewListEmpty();
 }
 
 function toggleChat(channelName, enabled) {
@@ -67,4 +71,27 @@ function toggleChat(channelName, enabled) {
     let elementById = document.getElementById(twitchEmbedId);
     elementById.innerHTML = "";
     spawnTwitchEmbed(channelName, enabled);
+}
+
+function checkIfViewListEmpty() {
+    let viewList = document.getElementById("view-list");
+    if (viewList.hasChildNodes()) {
+        if (emptyViewListPlaceholderVisible) {
+            setAttribute("empty-vl-placeholder", "style", "display: none");
+            emptyViewListPlaceholderVisible = false;
+        }
+    } else {
+        if (!emptyViewListPlaceholderVisible) {
+            removeAttribute("empty-vl-placeholder", "style");
+            emptyViewListPlaceholderVisible = true;
+        }
+    }
+}
+
+function setAttribute(elementId, attribute, value) {
+    document.getElementById(elementId).setAttribute(attribute, value);
+}
+
+function removeAttribute(elementId, attribute) {
+    document.getElementById(elementId).removeAttribute(attribute);
 }
