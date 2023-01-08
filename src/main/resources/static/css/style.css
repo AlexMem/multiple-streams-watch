@@ -15,19 +15,24 @@
     --btn-close-shadow-color: var(--btn-close-color-hovered);
     --input-background-color: #e2e2e2;
     --input-shadow-color: var(--input-background-color);
-    --chat-toggler-color: #2a6696;
-    --chat-toggler-color-hovered: #3173ac;
-    --chat-toggler-color-pressed: #225380;
-    --chat-toggler-shadow-color: var(--chat-toggler-color-hovered);
+    --chat-toggler-color: var(--btn-color);
+    --chat-toggler-color-hovered: var(--btn-color-hovered);
+    --chat-toggler-color-pressed: var(--btn-color-pressed);
+    --chat-toggler-shadow-color: var(--btn-shadow-color);
+    --make-first-big-color-hovered: var(--btn-color);
+    --make-first-big-color-pressed: var(--btn-color-hovered);
+    --make-first-big-shadow-color: var(--btn-shadow-color);
     --empty-view-list-placeholder-text-color: hsla(0, 0%, 58%, 0.75);
     --chromatic-abberation-color-1: hsla(0, 100%, 50%, 0.45);
     --chromatic-abberation-color-2: hsla(218, 100%, 50%, 0.75);
+    --layout-btn-chosen-color: green;
     box-sizing: border-box;
     font-family: monospace;
 }
 
-html {
-    height: 100%;
+html#root {
+    min-height: 0;
+    max-height: 100vh;
 }
 
 body {
@@ -60,15 +65,19 @@ input#add-view-input {
     left: -100vw;
 }
 
+.display-none {
+    display: none;
+}
+
 .twitch-embed-container {
     height: 100%;
 }
 
 .app {
     flex-direction: column;
-    overflow: auto;
-    height: 100%;
     width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
 }
 
 .flex {
@@ -102,7 +111,7 @@ h1#header-text {
 
 .channel-nameplate {
     margin: 5px 5px 5px 5px;
-    font-size: 25px;
+    /*font-size: 25px;*/
     color: var(--text-color);
 }
 
@@ -110,10 +119,54 @@ h1#header-text {
     color: var(--text-color);
 }
 
-.view-list-box {
+.micro-text {
+    font-size: 12px;
+    margin: 0;
+    align-self: end;
+    color: var(--header-secondary-text-color);
+}
+
+.mode-switcher {
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.mode-btn-container {
+    margin: 3px;
+}
+
+.mode-free-btn-image {
+    height: 15px;
+}
+
+.mode-first-big-btn-image {
+    height: 15px;
+}
+
+.view-layout-free {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.view-layout-first-big {
+    flex-direction: row;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.view-list-free {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.view-list-first-big {
+    flex-direction: column;
+    max-height: inherit;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-left: auto;
+    padding-right: 25px;
 }
 
 .view {
@@ -126,16 +179,35 @@ h1#header-text {
     max-height: 99%;
     border-radius: 15px 15px 0 0;
     margin: 5px;
-    resize: both;
     overflow: hidden;
     background-color: var(--view-background-color);
     box-shadow: 0 0 5px var(--shadow-color);
+}
+
+.resizable {
+    resize: both;
+}
+
+.notresizable {
+    resize: none;
+}
+
+.view-first-big {
+    align-self: center;
+    width: 75%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    margin-left: auto;
 }
 
 .view-header {
     flex-direction: row;
     margin: 5px 15px;
     justify-content: space-between;
+}
+
+.view-header-buttons {
+    margin-left: auto;
 }
 
 .add-view-box {
@@ -168,15 +240,30 @@ h1#header-text {
     height: 10px;
 }
 
+.btn-make-first-big {
+    align-self:center;
+    margin-right: 15px;
+    background-color: var(--view-background-color);
+}
+
+.btn-make-first-big:hover {
+    background-color: var(--make-first-big-color-hovered);
+    box-shadow: 0 0 5px var(--make-first-big-shadow-color);
+}
+
+.btn-make-first-big:active {
+    background-color: var(--make-first-big-color-pressed);
+    box-shadow: 0 0 0 var(--make-first-big-shadow-color);
+}
+
 .chat-toggler-box {
-    margin-left: auto;
     margin-right: 15px;
 }
 
 .chat-toggler-label {
     align-self: center;
     border-radius: 3px 3px 3px 3px;
-    padding: 5px 10px;
+    padding: 3px 10px;
     transition: 0.15s;
     background-color: var(--view-background-color);
 }
@@ -212,6 +299,15 @@ h1#header-text {
 
 .btn-close-image {
     height: 10px;
+}
+
+.btn-make-first-big-image {
+    height: 10px;
+}
+
+.layout-btn-chosen {
+    background-color: var(--layout-btn-chosen-color);
+    pointer-events: none;
 }
 
 .empty-view-list-placeholder {

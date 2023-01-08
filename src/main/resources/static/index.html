@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="root">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,21 +15,36 @@
         <div><img class="twitch-logo" src="image/logo.png" height="50"></div>
         <div class="flex direction-column">
             <h1 id="header-text">MULTIPLE STREAMS WATCHER</h1>
-            <p style="font-size: 12px; margin: 0; align-self: end; color: var(--header-secondary-text-color)">
-                v1.0.4
+            <p class="micro-text">
+                v1.0.5
                 <a style="color: var(--header-secondary-text-color)" target="_blank" rel="noopener noreferrer" href='https://github.com/AlexMem'>
                     @seloid
                 </a>
             </p>
         </div>
         <div class="add-view-box flex">
-            <input id="add-view-input" class="text-input" placeholder="channel"/>
+            <input id="add-view-input" class="text-input" placeholder="channel" onkeydown="if (event.keyCode===13) addView(document.getElementById('add-view-input').value);"/>
             <div id="add-view-btn" class="btn" onclick="addView(document.getElementById('add-view-input').value)">
                 <img class="add-view-btn-image" src="image/plus-symbol-button.png">
             </div>
         </div>
+        <div class="mode-switcher flex direction-column">
+            <div style="align-self: center">
+                <p class="micro-text" style="margin-top: 1px">layout</p>
+            </div>
+            <div class="flex">
+                <div id="mode-free-btn" class="btn mode-btn-container layout-btn-chosen" onclick="switchToMode(MODE_FREE)">
+                    <img class="mode-free-btn-image" src="image/mode-free-button.png">
+                </div>
+                <div id="mode-first-big-btn" class="btn mode-btn-container" onclick="switchToMode(MODE_FIRST_BIG)">
+                    <img class="mode-first-big-btn-image" src="image/mode-first-big-btn.png">
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="view-list" class="view-list-box flex"></div>
+    <div id="view-layout" class="view-layout-free flex">
+        <div id="view-list" class="view-list-free flex"></div>
+    </div>
     <div id="empty-vl-placeholder" class="empty-view-list-placeholder flex direction-column">
         <div style="font-size: 65px;">It's quite empty here...</div>
         <div style="font-size: 35px;">you can add some streams via input above</div>
