@@ -19,8 +19,8 @@
     --chat-toggler-color-hovered: var(--btn-color-hovered);
     --chat-toggler-color-pressed: var(--btn-color-pressed);
     --chat-toggler-shadow-color: var(--btn-shadow-color);
-    --make-first-big-color-hovered: var(--btn-color);
-    --make-first-big-color-pressed: var(--btn-color-hovered);
+    --make-first-big-color-hovered: var(--btn-color-hovered);
+    --make-first-big-color-pressed: var(--btn-color-pressed);
     --make-first-big-shadow-color: var(--btn-shadow-color);
     --empty-view-list-placeholder-text-color: hsla(0, 0%, 58%, 0.75);
     --chromatic-abberation-color-1: hsla(0, 100%, 50%, 0.45);
@@ -202,7 +202,7 @@ h1#header-text {
 
 .view-header {
     flex-direction: row;
-    margin: 5px 15px;
+    margin: 3px 15px;
     justify-content: space-between;
 }
 
@@ -241,8 +241,9 @@ h1#header-text {
 }
 
 .btn-make-first-big {
-    align-self:center;
-    margin-right: 15px;
+    align-items: center;
+    margin-right: 5px;
+    height: 100%;
     background-color: var(--view-background-color);
 }
 
@@ -257,13 +258,14 @@ h1#header-text {
 }
 
 .chat-toggler-box {
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 .chat-toggler-label {
-    align-self: center;
     border-radius: 3px 3px 3px 3px;
     padding: 3px 10px;
+    align-items: center;
+    height: 100%;
     transition: 0.15s;
     background-color: var(--view-background-color);
 }
@@ -283,7 +285,8 @@ h1#header-text {
 }
 
 .btn-close {
-    align-self: center;
+    align-items: center;
+    height: 100%;
     background-color: var(--view-background-color);
 }
 

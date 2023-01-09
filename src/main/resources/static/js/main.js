@@ -47,16 +47,16 @@ function addView(channelName) {
         "<div class='view-header flex'>" +
             "<h3 class='channel-nameplate'>" + channelName + "</h3>" +
             "<div class='view-header-buttons flex'>" +
-                "<div class='btn btn-make-first-big " + (currentMode !== MODE_FIRST_BIG ? "display-none" : "") + "' onclick='makeViewFirstBig(\"" + channelName + "\")'>" +
+                "<div class='btn btn-make-first-big flex " + (currentMode !== MODE_FIRST_BIG ? "display-none" : "") + "' onclick='makeViewFirstBig(\"" + channelName + "\")'>" +
                     "<img class='btn-make-first-big-image' src='image/arrow-left.png'>" +
                 "</div>" +
                 "<div class='chat-toggler-box flex'>" +
-                    "<label for='" + chatToggleCheckboxId + "' class='chat-toggler-label'>" +
+                    "<label for='" + chatToggleCheckboxId + "' class='chat-toggler-label flex'>" +
                     "<img class='chat-toggler-label-image' src='image/chat.png'>" +
                     "</label>" +
                     "<input id='" + chatToggleCheckboxId + "' type='checkbox' class='chat-toggler visually-hidden' onclick='toggleChat(\"" + channelName + "\", document.getElementById(\"" + chatToggleCheckboxId + "\").checked)'>" +
                 "</div>" +
-                "<div class='btn btn-close' onclick='removeView(\"" + channelName + "\")'>" +
+                "<div class='btn btn-close flex' onclick='removeView(\"" + channelName + "\")'>" +
                     "<img class='btn-close-image' src='image/close.png'>" +
                 "</div>" +
             "</div>" +
