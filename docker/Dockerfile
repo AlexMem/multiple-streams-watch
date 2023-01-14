@@ -1,4 +1,3 @@
 FROM openjdk:19-jdk-alpine
-COPY multiple-stream-watcher-1.0.7.jar multiple-stream-watcher.jar
-EXPOSE 8080
+COPY multiple-stream-watcher-1.0.8.jar multiple-stream-watcher.jar
 ENTRYPOINT ["java","-jar","/multiple-stream-watcher.jar"]

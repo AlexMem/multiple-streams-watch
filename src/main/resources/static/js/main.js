@@ -4,6 +4,18 @@ const MODE_FIRST_BIG = "MODE_FIRST_BIG";
 var currentMode = MODE_FREE;
 var emptyViewListPlaceholderVisible = true;
 
+var serverMetadataUrl = window.location.href + "rest/metadata";
+fetch(serverMetadataUrl)
+    .then(value => value.json())
+    .then(metadata => {
+        applyVersion(metadata["version"]);
+    });
+
+function applyVersion(version) {
+    let headerInfo = document.getElementById("header-info");
+    headerInfo.innerHTML = headerInfo.innerHTML.replace("{version}", "v" + version);
+}
+
 function spawnTwitchEmbed(channelName, enableChat) {
     let layout = enableChat ? "video-with-chat" : "video";
     let twitchEmbedId = getTwitchEmbedId(channelName);

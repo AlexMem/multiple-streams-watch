@@ -5,8 +5,16 @@ plugins {
 }
 
 group = 'ru.seloid'
-version = '1.0.7'
+version = '1.0.8'
 sourceCompatibility = '19'
+
+springBoot {
+    buildInfo {
+        properties {
+            version = "${project.version}"
+        }
+    }
+}
 
 repositories {
     mavenCentral()
