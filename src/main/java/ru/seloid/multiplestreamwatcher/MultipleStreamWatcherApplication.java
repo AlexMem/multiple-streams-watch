@@ -2,11 +2,9 @@ package ru.seloid.multiplestreamwatcher;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
-import ru.seloid.multiplestreamwatcher.config.ApplicationConfig;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 
-@SpringBootApplication
-@Import(ApplicationConfig.class)
+@SpringBootApplication(exclude = {UserDetailsServiceAutoConfiguration.class})
 public class MultipleStreamWatcherApplication {
     public static void main(final String[] args) {
         SpringApplication.run(MultipleStreamWatcherApplication.class, args);

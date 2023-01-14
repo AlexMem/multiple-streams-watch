@@ -1,4 +1,7 @@
 # Multiple stream watcher
 Web application to watch several twitch.tv streams simultaneously
 
-Docker hub repository https://hub.docker.com/r/peacefulpinkwhale/multiple-stream-watcher
+[Docker hub repository](https://hub.docker.com/r/peacefulpinkwhale/multiple-stream-watcher)
+
+SSL turned off by default. Project uses twitch embed approach and it [requires](https://dev.twitch.tv/docs/embed/#embedded-experiences-requirements) host to support SSL. For localhost access it's not necessary, but when deploying on external host you might need to turn SSL on.
+You can do it via environment variables. For details check [application.yaml](/src/main/resources/application.yaml)
