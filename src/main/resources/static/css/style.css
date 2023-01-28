@@ -5,6 +5,10 @@
     --background-color: #1f1f1f;
     --view-background-color: #252525;
     --view-border-color: #454545;
+    --tooltip-text-color: var(--view-background-color);
+    --tooltip-background-color: var(--text-color);
+    --tooltip-border-color: var(--view-border-color);
+    --tooltip-shadow-color: var(--shadow-color);
     --btn-color: #454545;
     --btn-color-hovered: #626262;
     --btn-color-pressed: #353535;
@@ -124,6 +128,62 @@ h1#header-text {
     margin: 0;
     align-self: end;
     color: var(--header-secondary-text-color);
+}
+
+.tooltiped {
+    position: relative;
+}
+
+.tooltiped:hover .tooltip {
+    visibility: visible;
+}
+
+.tooltip {
+    position: absolute;
+    width: max-content;
+    max-width: 200px;
+    visibility: hidden;
+    color: var(--tooltip-text-color);
+    font-weight: 1000;
+    text-align: center;
+    background-color: var(--tooltip-background-color);
+    box-shadow: 0 0 5px var(--tooltip-shadow-color);
+    border-radius: 5px;
+    padding: 3px 7px 3px 7px;
+    transform: translateX(-50%);
+    z-index: 15;
+}
+
+.tooltiped .tooltip::after {
+    content: "";
+    border-width: 4px;
+    border-style: solid;
+}
+
+.tooltiped .tooltip-bot {
+    top: 100%;
+    left: 50%;
+    margin-top: 5px;
+}
+
+.tooltiped .tooltip-bot::after {
+    position: absolute;
+    bottom: 100%;
+    left: 45%;
+    border-color: transparent transparent var(--tooltip-background-color) transparent;
+}
+
+.tooltiped .tooltip-top {
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 5px;
+}
+
+.tooltiped .tooltip-top::after {
+    position: absolute;
+    top: 100%;
+    left: 45%;
+    border-color: var(--tooltip-background-color) transparent transparent transparent;
 }
 
 .mode-switcher {

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'ru.seloid'
-version = '1.0.8'
+version = '1.0.9'
 sourceCompatibility = '19'
 
 springBoot {

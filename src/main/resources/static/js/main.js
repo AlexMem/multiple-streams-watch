@@ -59,10 +59,12 @@ function addView(channelName) {
         "<div class='view-header flex'>" +
             "<h3 class='channel-nameplate'>" + channelName + "</h3>" +
             "<div class='view-header-buttons flex'>" +
-                "<div class='btn btn-make-first-big flex " + (currentMode !== MODE_FIRST_BIG ? "display-none" : "") + "' onclick='makeViewFirstBig(\"" + channelName + "\")'>" +
+                "<div class='btn btn-make-first-big flex " + (currentMode !== MODE_FIRST_BIG ? "display-none" : "") + " tooltiped' onclick='makeViewFirstBig(\"" + channelName + "\")'>" +
+                    "<div class='tooltip tooltip-bot'>make big</div>" +
                     "<img class='btn-make-first-big-image' src='image/arrow-left.png'>" +
                 "</div>" +
-                "<div class='chat-toggler-box flex'>" +
+                "<div class='chat-toggler-box flex tooltiped'>" +
+                    "<div class='tooltip tooltip-bot'>toggle chat</div>" +
                     "<label for='" + chatToggleCheckboxId + "' class='chat-toggler-label flex'>" +
                     "<img class='chat-toggler-label-image' src='image/chat.png'>" +
                     "</label>" +

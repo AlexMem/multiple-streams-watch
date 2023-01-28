@@ -24,7 +24,8 @@
         </div>
         <div class="add-view-box flex">
             <input id="add-view-input" class="text-input" placeholder="channel" onkeydown="if (event.keyCode===13) addView(document.getElementById('add-view-input').value);"/>
-            <div id="add-view-btn" class="btn" onclick="addView(document.getElementById('add-view-input').value)">
+            <div id="add-view-btn" class="btn tooltiped" onclick="addView(document.getElementById('add-view-input').value)">
+                <div class="tooltip tooltip-bot">add view</div>
                 <img class="add-view-btn-image" src="image/plus-symbol-button.png">
             </div>
         </div>
@@ -33,11 +34,13 @@
                 <p class="micro-text" style="margin-top: 1px">layout</p>
             </div>
             <div class="flex">
-                <div id="mode-free-btn" class="btn mode-btn-container layout-btn-chosen" onclick="switchToMode(MODE_FREE)">
+                <div id="mode-free-btn" class="btn mode-btn-container layout-btn-chosen tooltiped" onclick="switchToMode(MODE_FREE)">
                     <img class="mode-free-btn-image" src="image/mode-free-button.png">
+                    <div class="tooltip tooltip-bot">free</div>
                 </div>
-                <div id="mode-first-big-btn" class="btn mode-btn-container" onclick="switchToMode(MODE_FIRST_BIG)">
+                <div id="mode-first-big-btn" class="btn mode-btn-container tooltiped" onclick="switchToMode(MODE_FIRST_BIG)">
                     <img class="mode-first-big-btn-image" src="image/mode-first-big-btn.png">
+                    <div class="tooltip tooltip-bot">one is big</div>
                 </div>
             </div>
         </div>
