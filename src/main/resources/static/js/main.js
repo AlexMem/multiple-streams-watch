@@ -11,6 +11,25 @@ fetch(serverMetadataUrl)
         applyVersion(metadata["version"]);
     });
 
+const wsServerUrl = "ws://localhost:8085/";
+const wsSocket = new WebSocket(wsServerUrl, 'messaging');
+wsSocket.onopen = (e) => {
+    console.log(`WS ${wsServerUrl} connected`);
+}
+wsSocket.onmessage = (e) => {
+    console.log(`WS received message: ${e.data}`);
+}
+wsSocket.onclose = (e) => {
+    if (e.wasClean) {
+        console.log(`WS connection closed cleanly, code=${e.code} reason=${e.reason}`);
+    } else {
+        console.log(`WS connection died`);
+    }
+}
+wsSocket.onerror = (e) => {
+    console.log(`WS error`);
+}
+
 function applyVersion(version) {
     let headerInfo = document.getElementById("header-info");
     headerInfo.innerHTML = headerInfo.innerHTML.replace("{version}", "v" + version);
