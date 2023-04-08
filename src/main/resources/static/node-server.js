@@ -1,20 +1,21 @@
 const http = require('http');
 const fs = require('fs');
 const port = 8085;
+const version = "1.1.0"
+const twitchClientId = process.argv[2];
 
 log('Starting server on port ' + port + ' ...');
 http.createServer((req, res) => {
     log('Incoming request ' + req.url);
     resolveUrl(req, res);
-}).listen(port);
-log('Server is running');
+}).listen(port, () => log('Server is running'));
 
 function resolveUrl(req, res) {
     if (req.url === '/') {
         loadFile('index.html', res);
     } else if (req.url === '/rest/metadata') {
         res.writeHead(200, {'ContentType': resolveContentType('json')});
-        res.write('{"version":"1.0.9"}');
+        res.write(JSON.stringify({"version": version, "twitch-client-id": twitchClientId}));
         res.end();
     } else {
         loadFile('.' + req.url, res);
@@ -23,7 +24,7 @@ function resolveUrl(req, res) {
 
 function loadFile(path, res) {
     fs.readFile(path, (err, data) => {
-        res.writeHead(200, {'ContentType': resolveContentType(path)});
+        res.writeHead(200, {'Content-Type': resolveContentType(path)});
         res.write(data);
         return res.end();
     });
@@ -40,7 +41,7 @@ function resolveContentType(path) {
         return 'image/png';
     }
     if (path?.endsWith('.js')) {
-        return 'text/javascript';
+        return 'application/javascript';
     }
     if (path?.endsWith('json')) {
         return 'application/json';

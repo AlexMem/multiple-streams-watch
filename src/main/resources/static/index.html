@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html id="root">
 <head>
+    <base href="/">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Multiple Streams Watcher</title>
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
-    <script src="js/main.js"></script>
+    <script type="module" src="./script/main.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="image/logo.png">
 </head>
@@ -23,31 +24,51 @@
             </p>
         </div>
         <div class="add-view-box flex">
-            <input id="add-view-input" class="text-input" placeholder="channel" onkeydown="if (event.keyCode===13) addView(document.getElementById('add-view-input').value);"/>
-            <div id="add-view-btn" class="btn tooltiped" onclick="addView(document.getElementById('add-view-input').value)">
+            <input id="add-view-input" class="text-input" placeholder="channel"/>
+            <div id="add-view-btn" class="btn tooltiped">
                 <div class="tooltip tooltip-bot">add view</div>
                 <img class="add-view-btn-image" src="image/plus-symbol-button.png">
             </div>
+            <div id="search-result-list" class="flex direction-column"></div>
         </div>
         <div class="mode-switcher flex direction-column">
             <div style="align-self: center">
                 <p class="micro-text" style="margin-top: 1px">layout</p>
             </div>
             <div class="flex">
-                <div id="mode-free-btn" class="btn mode-btn-container layout-btn-chosen tooltiped" onclick="switchToMode(MODE_FREE)">
+                <div id="mode-free-btn" class="btn mode-btn-container layout-btn-chosen tooltiped">
                     <img class="mode-free-btn-image" src="image/mode-free-button.png">
                     <div class="tooltip tooltip-bot">free</div>
                 </div>
-                <div id="mode-first-big-btn" class="btn mode-btn-container tooltiped" onclick="switchToMode(MODE_FIRST_BIG)">
+                <div id="mode-first-big-btn" class="btn mode-btn-container tooltiped">
                     <img class="mode-first-big-btn-image" src="image/mode-first-big-btn.png">
                     <div class="tooltip tooltip-bot">one is big</div>
                 </div>
             </div>
         </div>
+        <div id="auth-section" class="auth-container flex">
+            <a id="twitch-login-btn" class="btn btn-login-with-twitch flex" style="display: none">Login via Twitch</a>
+            <div id="profile" class="profile-container flex" style="display: none">
+                <p id="nickname" class="profile-nickname-text">nickname</p>
+                <img id="profile-img" class="profile-image" src="">
+                <div id="logout-btn" class="btn btn-logout tooltiped flex">
+                    <div class="tooltip tooltip-bot">logout</div>
+                    <img id="logout-btn-img" class="logout-btn-image" src="image/logout.png">
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="view-layout" class="view-layout-free flex">
-        <div id="view-list" class="view-list-free flex"></div>
+    <div id="main-layout" class="flex">
+        <div id="followed-bar" class="flex direction-column">
+            <div class="followed-bar-icon">
+                <img class="followed-bar-icon-img" src="image/heart.png">
+            </div>
+        </div>
+        <div id="view-layout" class="view-layout-free flex">
+            <div id="view-list" class="view-list-free flex"></div>
+        </div>
     </div>
+    <div id="channel-info-tooltip" class="flex direction-column" style="display: none"></div>
     <div id="empty-vl-placeholder" class="empty-view-list-placeholder flex direction-column">
         <div style="font-size: 65px;">It's quite empty here...</div>
         <div style="font-size: 35px;">you can add some streams via input above</div>
