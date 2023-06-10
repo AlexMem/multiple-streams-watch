@@ -31,19 +31,19 @@ function loadFile(path, res) {
 }
 
 function resolveContentType(path) {
-    if (path?.endsWith('.html')) {
+    if (path.endsWith('.html')) {
         return 'text/html';
     }
-    if (path?.endsWith('.css')) {
+    if (path.endsWith('.css')) {
         return 'text/css';
     }
-    if (path?.endsWith('.png')) {
+    if (path.endsWith('.png')) {
         return 'image/png';
     }
-    if (path?.endsWith('.js')) {
+    if (path.endsWith('.js')) {
         return 'application/javascript';
     }
-    if (path?.endsWith('json')) {
+    if (path.endsWith('json')) {
         return 'application/json';
     }
     return '';
