@@ -83,6 +83,7 @@ function getFollowedChannelsInfos(loggedUser) {
                         followedChannel.streamTitle = stream.title;
                         followedChannel.category = stream.game_name;
                         followedChannel.viewerCounter = stream.viewer_count;
+                        followedChannel.thumbnailUrl = stream.thumbnail_url.replace("{width}x{height}", "640x360");
                     }
                 });
                 ui.updateFollowedChannelsBar();

@@ -93,15 +93,20 @@ function fillChannelInfoTooltip(channel) {
     utils.replaceTextInInnerHTML("channel-info-tooltip-category", "{category}", channel.category);
     utils.replaceTextInInnerHTML("channel-info-tooltip-stream-name", "{stream-name}", channel.streamTitle);
     utils.replaceTextInInnerHTML("channel-info-tooltip-viewer-counter", "{viewer-counter}", channel.viewerCounter);
+    utils.setAttribute("channel-info-tooltip-thumbnail", "src", channel.thumbnailUrl);
     return tooltip;
 }
 
 function resetChannelInfoTooltip() {
     let tooltip = document.getElementById("channel-info-tooltip");
     tooltip.setAttribute("style", "display: none");
-    tooltip.innerHTML = "<span id='channel-info-tooltip-channel-name'>{channel-name} • <span id='channel-info-tooltip-category'>{category}</span></span>" +
-        "<span id='channel-info-tooltip-stream-name'>{stream-name}</span>" +
-        "<span id='channel-info-tooltip-viewer-counter'><span style='color: red'>⏺</span> {viewer-counter} viewers</span>";
+    tooltip.innerHTML =
+        "<div id='channel-info-tooltip-header-container' class='flex direction-column'>" +
+            "<span id='channel-info-tooltip-channel-name'>{channel-name} • <span id='channel-info-tooltip-category'>{category}</span></span>" +
+            "<span id='channel-info-tooltip-stream-name'>{stream-name}</span>" +
+            "<span id='channel-info-tooltip-viewer-counter'><span style='color: red'>⏺</span> {viewer-counter} viewers</span>" +
+        "</div>" +
+        "<img id='channel-info-tooltip-thumbnail' width='640' height='360'/>";
 }
 
 function handleChannelUpdateSubType(payload) {
