@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const port = 8085;
-const version = "1.1.0"
+const version = "1.2.0"
 const twitchClientId = process.argv[2];
 
 log('Starting server on port ' + port + ' ...');
