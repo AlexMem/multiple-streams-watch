@@ -54,6 +54,8 @@ html#root {
 
 body {
     margin: 0;
+    background: url(/image/noise.svg);
+    background-blend-mode: color-burn;
     background-color: var(--background-color);
 }
 
@@ -78,7 +80,9 @@ input:hover, input:focus {
 }
 
 input#add-view-input {
-    width: 155px;
+    width: 250px;
+    height: 36px;
+    font-size: 18px;
     border-radius: 3px 0 0 3px;
 }
 
@@ -297,7 +301,7 @@ h1#header-text {
 
 #view-layout {
     width: 100%;
-    padding-left: 10px;
+    padding: 10px;
 }
 
 .view-layout-free {
@@ -306,14 +310,14 @@ h1#header-text {
 }
 
 .view-layout-first-big {
-    flex-direction: row;
+    flex-direction: column;
     overflow: hidden;
     justify-content: space-between;
 }
 
 #view-list {
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     scrollbar-width: thin;
     padding-top: 5px;
 }
@@ -325,8 +329,9 @@ h1#header-text {
 }
 
 .view-list-first-big {
-    flex-direction: column;
-    max-height: inherit;
+    flex-direction: row;
+    /*max-height: inherit;*/
+    max-width: inherit;
     width: auto;
     padding-right: 10px;
 }
@@ -356,7 +361,7 @@ h1#header-text {
 
 .view-first-big {
     align-self: center;
-    width: 75%;
+    width: 100%;
     height: auto;
     aspect-ratio: 16/9;
     margin: auto;
@@ -377,6 +382,8 @@ h1#header-text {
 }
 
 .btn {
+    justify-content: center;
+    align-content: center;
     border-radius: 3px 3px 3px 3px;
     padding: 5px 10px;
     transition: 0.15s;
@@ -575,6 +582,15 @@ h1#header-text {
     border-bottom-right-radius: inherit;
 }
 
+.chat-free {
+    display: none;
+}
+
+.chat-first-big {
+    display: block;
+    box-shadow: 0 0 5px var(--shadow-color);
+}
+
 .empty-view-list-placeholder {
     position: absolute;
     width: 100%;
@@ -585,6 +601,11 @@ h1#header-text {
     color: var(--empty-view-list-placeholder-text-color);
     text-shadow: -1px 1px 1px var(--chromatic-abberation-color-1), 1px 2px 1px var(--chromatic-abberation-color-2);
     z-index: -1;
+}
+
+.noise {
+    background: url(/image/noise.svg);
+    background-blend-mode: color-burn;
 }
 
 ::-webkit-scrollbar {

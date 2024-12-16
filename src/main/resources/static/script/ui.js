@@ -182,6 +182,11 @@ function clearSearchResultList(searchResultList) {
     }
 }
 
+
+function spawnTwitchStream(channelName, enableChat) {
+    spawnTwitchPlayer(channelName);
+}
+
 function spawnTwitchEmbed(channelName, enableChat) {
     let layout = enableChat ? "video-with-chat" : "video";
     let twitchEmbedId = getTwitchEmbedId(channelName);
@@ -193,6 +198,19 @@ function spawnTwitchEmbed(channelName, enableChat) {
     });
     embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
         let player = embed.getPlayer();
+        player.setQuality("480p");
+        player.play();
+    });
+}
+
+function spawnTwitchPlayer(channelName) {
+    let twitchEmbedId = getTwitchEmbedId(channelName);
+    let player = new Twitch.Player(twitchEmbedId, {
+        width: "100%",
+        height: "100%",
+        channel: channelName
+    });
+    player.addEventListener(Twitch.Player.READY, () => {
         player.setQuality("480p");
         player.play();
     });
@@ -266,6 +284,7 @@ function addView(channelName) {
         view.classList.add("view-first-big");
         [...view.getElementsByClassName("btn-make-first-big")].forEach(e => e.classList.add("display-none"));
         document.getElementById("view-layout").prepend(view);
+        updateChat(channelName);
     } else {
         viewList.append(view);
     }
@@ -274,8 +293,23 @@ function addView(channelName) {
     let chatToggleCheckbox = document.getElementById(chatToggleCheckboxId);
     chatToggleCheckbox.addEventListener("click", () => toggleChat(channelName, chatToggleCheckbox.checked));
     document.getElementById(viewCloseButtonId).addEventListener("click", () => removeView(channelName));
-    spawnTwitchEmbed(channelName, false);
+    spawnTwitchStream(channelName, false);
     handlePlaceholder();
+}
+
+function updateChat(channelName) {
+    let chat = document.getElementById("chat");
+    if (channelName === "") {
+        chat.innerHTML = "";
+    } else {
+        chat.innerHTML =
+            "<iframe id='twitch-chat-embed'" +
+                    " src='https://www.twitch.tv/embed/" + channelName + "/chat?darkpopout&parent=" + window.location.hostname + "'" +
+                    " height='100%'" +
+                    " width='350px'" +
+                    " style='border: 0'>" +
+            "</iframe>";
+    }
 }
 
 function removeView(channelName) {
@@ -297,7 +331,7 @@ function toggleChat(channelName, enabled) {
     let twitchEmbedId = getTwitchEmbedId(channelName);
     let elementById = document.getElementById(twitchEmbedId);
     elementById.innerHTML = "";
-    spawnTwitchEmbed(channelName, enabled);
+    spawnTwitchStream(channelName, enabled);
 }
 
 function handlePlaceholder() {
@@ -311,6 +345,7 @@ function handlePlaceholder() {
             utils.removeAttribute("empty-vl-placeholder", "style");
             emptyViewListPlaceholderVisible = true;
         }
+        updateChat("");
     }
 }
 
@@ -350,6 +385,9 @@ function setModeFirstBig() {
     utils.replaceClass(viewList, "view-list-free", "view-list-first-big");
     makeFirstViewOfViewListABigOne(viewLayout, viewList);
 
+    let chat = document.getElementById("chat");
+    utils.replaceClass(chat, "chat-free", "chat-first-big");
+
     [...document.getElementsByClassName("view")].forEach(e => {
         utils.replaceClass(e, "resizable", "notresizable");
         e.style = "";
@@ -370,6 +408,9 @@ function setModeFree() {
 
     let viewList = document.getElementById("view-list");
     utils.replaceClass(viewList, "view-list-first-big", "view-list-free");
+
+    let chat = document.getElementById("chat");
+    utils.replaceClass(chat, "chat-first-big", "chat-free");
 
     let firstBigs = document.getElementsByClassName("view-first-big");
     if (firstBigs.length !== 0) {
@@ -394,6 +435,7 @@ function makeFirstViewOfViewListABigOne(viewLayout, viewList) {
         first.classList.add("view-first-big");
         [...first.getElementsByClassName("btn-make-first-big")].forEach(e => e.classList.add("display-none"));
         viewLayout.prepend(first);
+        updateChat(first.getAttribute("id").split("-")[0]);
     }
 }
 
@@ -413,6 +455,8 @@ function makeViewFirstBig(channelName) {
 
     viewLayout.prepend(newFirstBig);
     newFirstBig.classList.add("view-first-big");
+
+    updateChat(channelName);
 
     [...oldFirstBig.getElementsByClassName("btn-make-first-big")].forEach(e => e.classList.remove("display-none"));
     [...newFirstBig.getElementsByClassName("btn-make-first-big")].forEach(e => e.classList.add("display-none"));
